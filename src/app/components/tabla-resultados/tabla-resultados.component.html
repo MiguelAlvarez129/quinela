@@ -1,0 +1,58 @@
+<table mat-table [dataSource]="dataSource"s>
+
+  <!--- Note that these columns can be defined in any order.
+        The actual rendered columns are set as a property on the row definition" -->
+
+  <!-- Position Column -->
+  <ng-container matColumnDef="pais">
+    <th mat-header-cell *matHeaderCellDef> País </th>
+    <td mat-cell *matCellDef="let element"> {{element.pais}} </td>
+  </ng-container> 
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="ptos">
+    <th mat-header-cell *matHeaderCellDef> Puntos </th>
+    <td mat-cell *matCellDef="let element"> {{element.ptos}} </td>
+  </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="gan">
+    <th mat-header-cell *matHeaderCellDef> Gan. </th>
+    <td mat-cell *matCellDef="let element"> {{element.gan}} </td>
+  </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="per">
+      <th mat-header-cell *matHeaderCellDef> Per. </th>
+      <td mat-cell *matCellDef="let element"> {{element.per}} </td>
+    </ng-container>
+
+      <!-- Weight Column -->
+  <ng-container matColumnDef="emp">
+    <th mat-header-cell *matHeaderCellDef> Emp. </th>
+    <td mat-cell *matCellDef="let element"> {{element.emp}} </td>
+  </ng-container>
+
+  
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="gf">
+    <th mat-header-cell *matHeaderCellDef> Gf </th>
+    <td mat-cell *matCellDef="let element"> {{notANumber(element.gf) }} 
+
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="gc">
+    <th mat-header-cell *matHeaderCellDef> Gc </th>
+    <td mat-cell *matCellDef="let element"> {{notANumber(element.gc)}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="dif">
+    <th mat-header-cell *matHeaderCellDef> Dif </th>
+    <td mat-cell *matCellDef="let element"> {{notANumber(element.dif)}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

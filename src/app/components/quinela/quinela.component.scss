@@ -1,12 +1,6 @@
 
 mat-stepper {
-  margin: 10px 50px;
+  margin: 64px;
+  background-color: transparent;
 }
 
-::ng-deep .mat-form-field-infix{
-  width:3ch !important;
-}
-
-.row{
-  align-items: baseline;
-}

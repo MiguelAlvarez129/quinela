@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, FormArray } from '@angular/forms';
+import { Component, OnInit, Input } from '@angular/core';
+import { FormBuilder, FormGroup, FormArray, UntypedFormArray } from '@angular/forms';
 import equipos from '../../../equipos.json'
 @Component({
   selector: 'app-quinela',
@@ -9,112 +9,20 @@ import equipos from '../../../equipos.json'
 export class QuinelaComponent implements OnInit {
 
   constructor(private fb: FormBuilder) { }
-  grupo!: FormGroup;
-  partidosJugados: any = [];
-  puntaje: any = {};
-
-  ngOnInit(): void {
-    this.grupo = this.fb.group({
-      grupo: 'A',
-      partidos: this.fb.array([])
-    })
-    equipos.map((e) => { 
-      if (e['Group'] === 'Group A') {
-        this.agregarPartido(e)
-        if (this.partidosJugados[e['AwayTeam']] === undefined){
-          this.partidosJugados.push({[e['HomeTeam']]:0,[e['AwayTeam']]:0})
-        }
-        if (this.puntaje[e['AwayTeam']] === undefined) this.puntaje[e['AwayTeam']] 
-        = {ptos:0,gan:0,emp:0,per:0,gf:0,gc:0,dif:0}
-        if (this.puntaje[e['HomeTeam']] === undefined) this.puntaje[e['HomeTeam']] = {ptos:0,gan:0,emp:0,per:0,gf:0,gc:0,dif:0}
-
-      }
-    })
-
-  }
-
-  get partidos() {
-    return this.grupo.controls["partidos"] as FormArray;
-  }
-
-
-
-  agregarPartido(partido : any){
-    const form = this.fb.group({
-      partidoNum: partido['MatchNumber'],
-      fecha:partido['DateUtc'],
-      resultados: this.fb.group({
-        paisA: [partido['HomeTeam']],
-        golesA:[0],
-        paisB: [partido['AwayTeam']],
-        golesB:[0]
-      }),
-    }) 
   
-
-    form['controls'].resultados.valueChanges.subscribe((e) => {
-     this.actualizarResultados(e)
-     console.log(e)
-      return e
-    })
-
-    this.partidos.push(form) 
-  } 
-
-  actualizarResultados(resultados : object){
-    const {paisA,paisB,golesA,golesB} = resultados as any;
-    this.partidosJugados = this.partidosJugados.map((e : any) => {
-      const keys = Object.keys(e)
-      if (keys.includes(paisA) && keys.includes(paisB)) {
-       
-        e[paisA] = golesA
-        e[paisB] = golesB
-     
-      }
-      return e
-    })
-
-    // this.puntaje = this.partidosJugados.reduce((acc : any, e : any)=>{
-    //   const keys = Object.keys(e)
-    //   for (let key of keys){
-    //     acc[key] = 
-    //   }
-    // if (golesA === golesB){
-    //   this.puntaje[paisA].emp += 1;
-    //   this.puntaje[paisA].emp += 1;
-    // } else if (golesA > golesB){
-    //   this.puntaje[paisA].gan += 1;
-    //   this.puntaje[paisA].per -= 1;
-    //   this.puntaje[paisB].gan -= 1;
-    //   this.puntaje[paisB].per += 1;
-    // } else {
-    //   this.puntaje[paisB].gan += 1;
-    //   this.puntaje[paisB].per -= 1;
-    //   this.puntaje[paisA].gan -= 1;
-    //   this.puntaje[paisA].per += 1;
-    // } 
-    //   return acc
-    // },{})
-    // this.partidosJugados[paisA + '-' + paisB][paisA] = golesA
-    // this.partidosJugados[paisA + '-' + paisB][paisB] = golesB
-
-
-
-
-    // if (golesA === golesB){
-    //   this.puntaje[paisA].emp += 1;
-    //   this.puntaje[paisA].emp += 1;
-    // } else if (golesA > golesB){
-    //   this.puntaje[paisA].gan += 1;
-    //   this.puntaje[paisA].per -= 1;
-    //   this.puntaje[paisB].gan -= 1;
-    //   this.puntaje[paisB].per += 1;
-    // } else {
-    //   this.puntaje[paisB].gan += 1;
-    //   this.puntaje[paisB].per -= 1;
-    //   this.puntaje[paisA].gan -= 1;
-    //   this.puntaje[paisA].per += 1;
-    // } 
-
+  primeraFase : any =[ { "puntaje": [ { "pais": "Saudi Arabia", "ptos": 3, "gan": 1, "emp": 0, "per": 2, "gf": 4, "gc": 6, "dif": -2 }, { "pais": "Argentina", "ptos": 1, "gan": 0, "emp": 1, "per": 2, "gf": 4, "gc": 6, "dif": -2 }, { "pais": "Poland", "ptos": 4, "gan": 1, "emp": 1, "per": 1, "gf": 6, "gc": 5, "dif": 1 }, { "pais": "Mexico", "ptos": 9, "gan": 3, "emp": 0, "per": 0, "gf": 6, "gc": 3, "dif": 3 } ], "grupo": "Group C" }, { "puntaje": [ { "pais": "Tunisia", "ptos": 3, "gan": 1, "emp": 0, "per": 2, "gf": 4, "gc": 6, "dif": -2 }, { "pais": "Denmark", "ptos": 4, "gan": 1, "emp": 1, "per": 1, "gf": 5, "gc": 5, "dif": 0 }, { "pais": "Australia", "ptos": 4, "gan": 1, "emp": 1, "per": 1, "gf": 5, "gc": 5, "dif": 0 }, { "pais": "France", "ptos": 6, "gan": 2, "emp": 0, "per": 1, "gf": 6, "gc": 4, "dif": 2 } ], "grupo": "Group D" }, { "puntaje": [ { "pais": "Japan", "ptos": 7, "gan": 2, "emp": 1, "per": 0, "gf": 6, "gc": 4, "dif": 2 }, { "pais": "Germany", "ptos": 2, "gan": 0, "emp": 2, "per": 1, "gf": 3, "gc": 4, "dif": -1 }, { "pais": "Costa Rica", "ptos": 1, "gan": 0, "emp": 1, "per": 2, "gf": 3, "gc": 5, "dif": -2 }, { "pais": "Spain", "ptos": 5, "gan": 1, "emp": 2, "per": 0, "gf": 5, "gc": 4, "dif": 1 } ], "grupo": "Group E" }, { "puntaje": [ { "pais": "Croatia", "ptos": 4, "gan": 1, "emp": 1, "per": 1, "gf": 5, "gc": 5, "dif": 0 }, { "pais": "Morocco", "ptos": 3, "gan": 1, "emp": 0, "per": 2, "gf": 5, "gc": 6, "dif": -1 }, { "pais": "Canada", "ptos": 4, "gan": 1, "emp": 1, "per": 1, "gf": 7, "gc": 6, "dif": 1 }, { "pais": "Belgium", "ptos": 6, "gan": 2, "emp": 0, "per": 1, "gf": 5, "gc": 5, "dif": 0 } ], "grupo": "Group F" }, { "puntaje": [ { "pais": "Cameroon", "ptos": 6, "gan": 2, "emp": 0, "per": 1, "gf": 7, "gc": 5, "dif": 2 }, { "pais": "Switzerland", "ptos": 3, "gan": 1, "emp": 0, "per": 2, "gf": 5, "gc": 7, "dif": -2 }, { "pais": "Serbia", "ptos": 3, "gan": 1, "emp": 0, "per": 2, "gf": 5, "gc": 7, "dif": -2 }, { "pais": "Brazil", "ptos": 6, "gan": 2, "emp": 0, "per": 1, "gf": 8, "gc": 6, "dif": 2 } ], "grupo": "Group G" }, { "puntaje": [ { "pais": "Korea Republic", "ptos": 6, "gan": 2, "emp": 0, "per": 1, "gf": 8, "gc": 4, "dif": 4 }, { "pais": "Uruguay", "ptos": 1, "gan": 0, "emp": 1, "per": 2, "gf": 4, "gc": 6, "dif": -2 }, { "pais": "Ghana", "ptos": 6, "gan": 2, "emp": 0, "per": 1, "gf": 7, "gc": 9, "dif": -2 }, { "pais": "Portugal", "ptos": 4, "gan": 1, "emp": 1, "per": 1, "gf": 7, "gc": 7, "dif": 0 } ], "grupo": "Group H" }, { "puntaje": [ { "pais": "Iran", "ptos": 9, "gan": 3, "emp": 0, "per": 0, "gf": 6, "gc": 3, "dif": 3 }, { "pais": "England", "ptos": 3, "gan": 1, "emp": 0, "per": 2, "gf": 5, "gc": 6, "dif": -1 }, { "pais": "Wales", "ptos": 3, "gan": 1, "emp": 0, "per": 2, "gf": 5, "gc": 6, "dif": -1 }, { "pais": "USA", "ptos": 3, "gan": 1, "emp": 0, "per": 2, "gf": 4, "gc": 5, "dif": -1 } ], "grupo": "Group B" }, { "puntaje": [ { "pais": "Ecuador", "ptos": 6, "gan": 2, "emp": 0, "per": 1, "gf": 5, "gc": 4, "dif": 1 }, { "pais": "Qatar", "ptos": 3, "gan": 1, "emp": 0, "per": 2, "gf": 4, "gc": 5, "dif": -1 }, { "pais": "Netherlands", "ptos": 3, "gan": 1, "emp": 0, "per": 2, "gf": 5, "gc": 6, "dif": -1 }, { "pais": "Senegal", "ptos": 6, "gan": 2, "emp": 0, "per": 1, "gf": 6, "gc": 5, "dif": 1 } ], "grupo": "Group A" } ]
+  ngOnInit(): void {
+   
   }
+
+  addResultado(event : any){
+    const index = this.primeraFase.findIndex((e : any)=> e.grupo === event.grupo);
+    if (index === -1){
+      this.primeraFase = [{...event},...this.primeraFase]
+    } else {
+      this.primeraFase = [...this.primeraFase.slice(0,index),{...this.primeraFase[index],puntaje:event.puntaje},...this.primeraFase.slice(index+1)]
+    }
+    
+  }
+
 }

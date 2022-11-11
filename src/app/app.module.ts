@@ -17,13 +17,17 @@ import { PrimeraFaseComponent } from './components/primera-fase/primera-fase.com
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
-
+import {MatTableModule} from '@angular/material/table';
+import { TablaResultadosComponent } from './components/tabla-resultados/tabla-resultados.component';
+import { OctavosComponent } from './components/octavos/octavos.component';
 @NgModule({
   declarations: [
     AppComponent,
     IndexComponent,
     QuinelaComponent,
-    PrimeraFaseComponent
+    PrimeraFaseComponent,
+    TablaResultadosComponent,
+    OctavosComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +42,8 @@ import {MatInputModule} from '@angular/material/input';
     MatStepperModule,
     MatFormFieldModule,
     ReactiveFormsModule,
-    MatInputModule
+    MatInputModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,22 @@
+
+mat-stepper {
+  margin: 64px;
+}
+
+::ng-deep .mat-form-field-infix{
+  width:3ch !important;
+}
+
+.row{
+  align-items: baseline;
+  justify-content: center;
+}
+
+::ng-deep .mat-tab-body-content {
+  height: 100%;
+  overflow: hidden !important;
+}
+
+.background{
+  background: rgba(255, 255, 255, 0.76);
+}
