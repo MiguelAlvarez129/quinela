@@ -1,0 +1,28 @@
+<mat-toolbar color="primary">
+  <button mat-icon-button class="example-icon" (click)="drawer.toggle()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span>Quiniela</span>
+
+</mat-toolbar>
+<mat-sidenav-container class="sidenav">
+  <mat-sidenav mode="side" #drawer >
+    <mat-selection-list #shoes [multiple]="false">
+     
+        <mat-list-option [routerLink]="['/index']" >
+          Index
+        </mat-list-option>
+
+  
+        <mat-list-option [routerLink]="['/quinela']">
+          Quinela
+        </mat-list-option>
+    
+
+    </mat-selection-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+

@@ -1,0 +1,12 @@
+
+mat-stepper {
+  margin: 10px 50px;
+}
+
+::ng-deep .mat-form-field-infix{
+  width:3ch !important;
+}
+
+.row{
+  align-items: baseline;
+}
