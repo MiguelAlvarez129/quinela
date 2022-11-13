@@ -1,6 +1,24 @@
 
 mat-stepper {
   margin: 64px;
-  background-color: transparent;
+  background-color: white;
+}
+
+.row{
+  align-items: baseline;
+  justify-content: center;
+}
+
+.background{
+  background: white;
+}
+
+
+.titulo{
+  font-family: 'world-cup';
+  text-align: center;
+  color: #7F1431;
+  font-size:xx-large;
+  font-weight: bold;
 }
 

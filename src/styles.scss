@@ -1,23 +1,70 @@
 /* You can add global styles to this file, and also import other style files */
-
-
+$md-mcgpalette0: (
+    50 : #f2e9ee,
+    100 : #dec8d4,
+    200 : #c8a3b7,
+    300 : #b27e9a,
+    400 : #a26285,
+    500 : #91466f,
+    600 : #893f67,
+    700 : #7e375c,
+    800 : #742f52,
+    900 : #622040,
+    A100 : #ffa2cd,
+    A200 : #ff6fb1,
+    A400 : #ff3c96,
+    A700 : #ff2388,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #ffffff,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #ffffff,
+    )
+);
 html, body { height: 100%; overflow: hidden; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 body, html {
   overflow: hidden;
-  margin-top: 64px;
-  background-image: url('./assets/bg.png');
-  
-  
+  background-image: url('./assets/fondo_1.jpg');
+  background-repeat:no-repeat;
+  background-position: center; 
 }
 
 @import '~@angular/material/theming';
 @include mat-core();
 
-  $primary: mat-palette($mat-red,900);
+  $primary: mat-palette($md-mcgpalette0,900);
   $accent: mat-palette($mat-orange,200);
 
   $theme: mat-light-theme($primary, $accent);
 
 @include angular-material-theme($theme);
+
+
+.background{
+  background: rgba(255, 255, 255, 0.76);
+}
+
+.medal{
+  background-image: url('./assets/medal.png');
+  margin: auto;
+  height: 40px;
+  width: 40px;
+  background-size: cover;
+}
+
+@font-face {
+  font-family: 'world-cup';
+  src: url('./assets/fonts/Qatar2022Arabic-Bold.ttf');
+}
 

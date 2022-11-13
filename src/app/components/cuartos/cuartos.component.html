@@ -1,9 +1,7 @@
-
-<!-- {{formOctavos.value | json}} -->
 <div class="background">
-  <form [formGroup]="formOctavos">
-    <ng-container formArrayName="octavos">
-      <ng-container *ngFor="let partido of partidosOctavos.controls;  let i = index">
+  <form [formGroup]="formCuartos">
+    <ng-container formArrayName="cuartos">
+      <ng-container *ngFor="let partido of partidosCuartos.controls;  let i = index">
         <div class="row" [formGroupName]="i">
           <div class="col-1">
             <div class="medal scale-in-center" *ngIf="partido.value['paisA'] === partido.value['ganador'] && partido.value['paisA'] && partido.value['ganador']">

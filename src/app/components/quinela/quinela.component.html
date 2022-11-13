@@ -1,35 +1,72 @@
-<mat-stepper #stepper>
-  <mat-step label="Primera Fase">
 
-    <mat-tab-group>
-      <mat-tab label="Grupo A"> <app-primera-fase (resultados)="addResultado($event)" [grupo]="'Group A'"></app-primera-fase></mat-tab>
-      <mat-tab label="Grupo B"> <app-primera-fase (resultados)="addResultado($event)" [grupo]="'Group B'"></app-primera-fase> </mat-tab>
-      <mat-tab label="Grupo C"> <app-primera-fase  (resultados)="addResultado($event)" [grupo]="'Group C'"></app-primera-fase></mat-tab>
-      <mat-tab label="Grupo D"> <app-primera-fase (resultados)="addResultado($event)" [grupo]="'Group D'"></app-primera-fase> </mat-tab>
-      <mat-tab label="Grupo E"> <app-primera-fase (resultados)="addResultado($event)" [grupo]="'Group E'"></app-primera-fase></mat-tab>
-      <mat-tab label="Grupo F"> <app-primera-fase  (resultados)="addResultado($event)"[grupo]="'Group F'"></app-primera-fase> </mat-tab>
-      <mat-tab label="Grupo G"> <app-primera-fase  (resultados)="addResultado($event)"[grupo]="'Group G'"></app-primera-fase></mat-tab>
-      <mat-tab label="Grupo H"> <app-primera-fase (resultados)="addResultado($event)" [grupo]="'Group H'"></app-primera-fase> </mat-tab>
-    </mat-tab-group>
-
-      <div>
-        <button mat-button matStepperNext>Next</button>
-      </div>
+  <mat-stepper #stepper>
+    <div class="background">
+    <mat-step label="Primera Fase">
+      <h1 class="titulo">
+        Primera Fase
+      </h1>
+      <ng-template matStepperIcon="edit">
+        <mat-icon>bubble_chart</mat-icon>
+      </ng-template>
+      <mat-tab-group>
+        <mat-tab label="Grupo A"> <app-primera-fase (resultados)="addResultado($event)" [grupo]="'Group A'"></app-primera-fase></mat-tab>
+        <mat-tab label="Grupo B"> <app-primera-fase (resultados)="addResultado($event)" [grupo]="'Group B'"></app-primera-fase> </mat-tab>
+        <mat-tab label="Grupo C"> <app-primera-fase  (resultados)="addResultado($event)" [grupo]="'Group C'"></app-primera-fase></mat-tab>
+        <mat-tab label="Grupo D"> <app-primera-fase (resultados)="addResultado($event)" [grupo]="'Group D'"></app-primera-fase> </mat-tab>
+        <mat-tab label="Grupo E"> <app-primera-fase (resultados)="addResultado($event)" [grupo]="'Group E'"></app-primera-fase></mat-tab>
+        <mat-tab label="Grupo F"> <app-primera-fase  (resultados)="addResultado($event)"[grupo]="'Group F'"></app-primera-fase> </mat-tab>
+        <mat-tab label="Grupo G"> <app-primera-fase  (resultados)="addResultado($event)"[grupo]="'Group G'"></app-primera-fase></mat-tab>
+        <mat-tab label="Grupo H"> <app-primera-fase (resultados)="addResultado($event)" [grupo]="'Group H'"></app-primera-fase> </mat-tab>
+      </mat-tab-group>
   
-  </mat-step>
-  <mat-step  label="Octavos">
-    <app-octavos [octavos]="primeraFase"> </app-octavos>
-    <div>
-      <button mat-button matStepperPrevious>Back</button>
-      <button mat-button matStepperNext>Next</button>
-    </div>
-  </mat-step>
-  <mat-step>
-    <ng-template matStepLabel>Done</ng-template>
-    <p>You are now done.</p>
-    <div>
-      <button mat-button matStepperPrevious>Back</button>
-      <button mat-button (click)="stepper.reset()">Reset</button>
-    </div>
-  </mat-step>
-</mat-stepper>
+        <div>
+          <button mat-button matStepperNext>Siguiente</button>
+        </div>
+    
+    </mat-step>
+    <mat-step  label="Octavos">
+      <h1 class="titulo">
+        Octavos
+      </h1>
+      <app-octavos (resultados)="addOctavos($event)" [octavos]="primeraFase"  > </app-octavos>
+      <div>
+        <button mat-button matStepperPrevious>Atrás</button>
+        <button mat-button matStepperNext>Siguiente</button>
+      </div>
+    </mat-step>
+    <mat-step  label="Cuartos">
+      <h1 class="titulo">
+        Cuartos
+      </h1>
+      <app-cuartos (resultados)="addCuartos($event)" [cuartos]="octavos" [grupos]="['AB1-CD1','AB2-CD2','EF1-GH1','EF2-GH2']" > </app-cuartos>
+      <div>
+        <button mat-button matStepperPrevious>Atrás</button>
+        <button mat-button matStepperNext>Siguiente</button>
+      </div>
+    </mat-step>
+    <mat-step label="Semifinales">
+      <h1 class="titulo">
+        Semifinales
+      </h1>
+      <app-cuartos (resultados)="addSemifinales($event)" [cuartos]="cuartos"  [grupos]="['AB1-CD1 EF1-GH1','AB2-CD2 EF2-GH2']"> </app-cuartos>
+      <div>
+        <button mat-button matStepperPrevious>Atrás</button>
+        <button mat-button matStepperNext>Siguiente</button>
+      </div>
+    </mat-step>
+    <mat-step label="Definición">
+      <h1 class="titulo">
+        Definición
+      </h1>
+      <app-cuartos (resultados)="addFinales($event)" [cuartos]="semifinales"   [grupos]="['AB1-CD1 EF1-GH1 AB2-CD2 EF2-GH2']"> </app-cuartos>
+      <h1 class="titulo">
+        Tercer Lugar
+      </h1>
+      <app-cuartos (resultados)="addTercerLugar($event)" [cuartos]="semifinalesPerdedores"   [grupos]="['AB1-CD1 EF1-GH1 AB2-CD2 EF2-GH2']"> </app-cuartos>
+      <div>
+        <button mat-button matStepperPrevious>Atrás</button>
+        <button mat-button (click)="onSubmit()">Enviar</button>
+      </div>
+    </mat-step>
+  </div>
+  </mat-stepper>

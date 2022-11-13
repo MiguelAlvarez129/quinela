@@ -1,5 +1,4 @@
 html {
-  margin-top: 64px !important;
   overflow:hidden;
 }
 .example-container {
@@ -9,6 +8,7 @@ html {
 
 mat-sidenav {
   width: 200px;
+  margin-top: 64px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -25,14 +25,15 @@ mat-toolbar{
 }
 
 mat-sidenav-content{
-  background-image:url('../assets//bg.png');
+  background-image:url('../assets/fondo_1.jpg');
 
-    background-size: contain;
+    background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
 }
 
 .wave{
-  background-image: url('../assets/wave.svg');
-  
+  background-image: url('../assets/wave.svg'); 
 }
+
+

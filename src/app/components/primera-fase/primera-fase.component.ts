@@ -14,12 +14,13 @@ export class PrimeraFaseComponent implements OnInit {
   puntaje: any = [];
   @Input() grupo : any;
   @Output() resultados = new EventEmitter();
+
   ngOnInit(): void {
     this.grupoForm = this.fb.group({
-      grupo: 'A',
+      grupo: 'A', 
       partidos: this.fb.array([])
     })
-    equipos.map((e) => { 
+    equipos.map((e) => {
       if (e['Group'] === this.grupo) {
         this.agregarPartido(e) 
         this.partidosJugados.push({[e['HomeTeam']]:0,[e['AwayTeam']]:0})
@@ -27,14 +28,12 @@ export class PrimeraFaseComponent implements OnInit {
         if (this.puntaje.find(({pais} : any) => pais == e['HomeTeam']) === undefined) this.puntaje.push({pais:e['HomeTeam'],ptos:0,gan:0,emp:0,per:0,gf:0,gc:0,dif:0})
       }
     })
-
+    this.grupoForm.valueChanges.subscribe(() =>  this.resultados.emit({puntaje:this.puntaje,grupo:this.grupo}))
   }
 
   get partidos() {
     return this.grupoForm.controls["partidos"] as FormArray;
   }
-
-
 
   agregarPartido(partido : any){
     const form = this.fb.group({
@@ -62,13 +61,12 @@ export class PrimeraFaseComponent implements OnInit {
     this.partidosJugados = this.partidosJugados.map((e : any) => {
       const keys = Object.keys(e)
       if (keys.includes(paisA) && keys.includes(paisB)) {
-       
         e[paisA] = golesA
         e[paisB] = golesB
-     
       }
       return e
     })
+
     this.puntaje = this.puntaje.map((e : any) =>{
       const filter = this.partidosJugados.reduce((acc: any,a : any) => {
         const keys = Object.keys(a)
@@ -103,10 +101,8 @@ export class PrimeraFaseComponent implements OnInit {
       return {...e,...filter}
     })
 
-    this.enviarResultado();
+  
   }
 
-  enviarResultado(){
-    this.resultados.emit({puntaje:this.puntaje,grupo:this.grupo})
-  }
+  
 }

@@ -20,6 +20,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatTableModule} from '@angular/material/table';
 import { TablaResultadosComponent } from './components/tabla-resultados/tabla-resultados.component';
 import { OctavosComponent } from './components/octavos/octavos.component';
+import { CuartosComponent } from './components/cuartos/cuartos.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +28,8 @@ import { OctavosComponent } from './components/octavos/octavos.component';
     QuinelaComponent,
     PrimeraFaseComponent,
     TablaResultadosComponent,
-    OctavosComponent
+    OctavosComponent,
+    CuartosComponent
   ],
   imports: [
     BrowserModule,
