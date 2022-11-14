@@ -1,9 +1,11 @@
 <mat-toolbar color="primary">
-  <button mat-icon-button class="example-icon" (click)="drawer.toggle()">
+  <!-- <button mat-icon-button class="example-icon" (click)="drawer.toggle()">
     <mat-icon>menu</mat-icon>
+  </button> -->
+  <span class="toolbar-title">Quiniela</span>
+  <button mat-button [routerLink]="['/quiniela']">
+    Llenar Quiniela
   </button>
-  <span>Quiniela</span>
-
 </mat-toolbar>
 <mat-sidenav-container class="sidenav">
   <mat-sidenav mode="side" #drawer >

@@ -1,7 +1,10 @@
 
 mat-stepper {
-  margin: 64px;
+  margin: 0 64px;
   background-color: white;
+  @media (max-width:1025px) {
+    margin:0;
+  }
 }
 
 .row{
@@ -21,4 +24,22 @@ mat-stepper {
   font-size:xx-large;
   font-weight: bold;
 }
+
+::ng-deep .mat-horizontal-content-container{
+  min-height: 500px !important;
+}
+
+.right{
+  position: absolute;
+  right: 0;
+  top: calc(45% - 40px);
+}
+
+
+.left{
+  position: absolute;
+  left: 0;
+  top: calc(45% - 40px);
+}
+
 

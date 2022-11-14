@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter , SimpleChange} from '@angular/core';
 import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
+import { GetPaisIconService } from 'src/app/services/get-pais-icon.service';
 
 @Component({
   selector: 'app-cuartos',
@@ -8,7 +9,7 @@ import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
 })
 export class CuartosComponent implements OnInit {
   
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private paises : GetPaisIconService) { }
   @Input() cuartos: any;
   @Input() prueba : any = [];
   @Input() grupos : string[] = [];
@@ -112,6 +113,11 @@ export class CuartosComponent implements OnInit {
     }
 
   }
+
+  getIcono(pais : any){
+    return this.paises.getIcono(pais)
+  }
+
 
   agregarValueChanges(form : any){
     form.valueChanges.subscribe((e : any) => {

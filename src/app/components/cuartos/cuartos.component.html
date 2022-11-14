@@ -8,6 +8,7 @@
             </div>
           </div>
           <div class="col-8">
+            <img style="height:50px" [src]="'../../../assets/paises/'+ getIcono(partido.value['paisA'])" alt="">
             <div class="pais">
               {{partido.value['paisA']}}
             </div>
@@ -29,6 +30,7 @@
             <div class="pais">
               {{partido.value['paisB']}}
             </div>
+            <img style="height:50px" [src]="'../../../assets/paises/'+ getIcono(partido.value['paisB'])" alt="">
           </div> 
           <div class="col-1" >
               <div class="medal scale-in-center" *ngIf="partido.value['paisB'] === partido.value['ganador'] && partido.value['paisA'] && partido.value['ganador']">

@@ -21,6 +21,10 @@ import {MatTableModule} from '@angular/material/table';
 import { TablaResultadosComponent } from './components/tabla-resultados/tabla-resultados.component';
 import { OctavosComponent } from './components/octavos/octavos.component';
 import { CuartosComponent } from './components/cuartos/cuartos.component';
+import { LoginComponent } from './components/login/login.component';
+import {MatCardModule} from '@angular/material/card';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,7 +33,8 @@ import { CuartosComponent } from './components/cuartos/cuartos.component';
     PrimeraFaseComponent,
     TablaResultadosComponent,
     OctavosComponent,
-    CuartosComponent
+    CuartosComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +50,9 @@ import { CuartosComponent } from './components/cuartos/cuartos.component';
     MatFormFieldModule,
     ReactiveFormsModule,
     MatInputModule,
-    MatTableModule
+    MatTableModule,
+    MatCardModule,
+    MatProgressBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

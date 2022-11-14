@@ -1,0 +1,38 @@
+<div class="center-container">
+  <mat-card class="card bg">
+    <div class="fondo-login">
+  
+    </div>
+  </mat-card>
+  <mat-card class="card d-flex justify-content-center">
+    <mat-card-title class="titulo">Quiniela 2022 Credicard</mat-card-title>
+    <mat-card-content>
+      <form [formGroup]="loginForm" (onSubmit)="onSubmit(loginForm.value)">
+        <div class="row">
+          <div class="col-12">
+            <mat-form-field class="w-100" appearance="fill"> 
+              <mat-label>Correo</mat-label>
+              <input matInput type="text" formControlName="correo" >
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <mat-form-field class="w-100" appearance="fill">
+              <mat-label>Contraseña</mat-label>
+              <input matInput type="text" formControlName="contrasena">
+            </mat-form-field>
+          </div>
+        </div>
+      </form>
+    </mat-card-content>
+    <mat-card-actions class="d-flex justify-content-center">
+      <div class="col-6">
+        <button mat-raised-button color="primary" type="submit" class="w-100" [disabled]="loading">Enviar</button>
+      </div>
+    </mat-card-actions>
+    <mat-card-footer >
+      <mat-progress-bar mode="indeterminate" *ngIf="loading"></mat-progress-bar>
+    </mat-card-footer>
+  </mat-card>
+</div>

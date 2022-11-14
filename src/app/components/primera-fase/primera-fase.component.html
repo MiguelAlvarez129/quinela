@@ -3,25 +3,26 @@
   <form [formGroup]="grupoForm">
     <ng-container formArrayName="partidos">
       <ng-container *ngFor="let partido of partidos.controls;  let i = index">
-       
           <div class="row" [formGroupName]="i">
-            <div class="col-2">
-              {{partido.value['partidoNum']}}
-            </div> 
-            <div class="col-2">
-              {{partido.value['fecha'] | date: 'short'}}
-            </div>
-            <div class="col-4" formGroupName="resultados">
-              <input type="text" readonly formControlName="paisA" class="border-0 text-center bg-transparent" >
-              <mat-form-field class="example-full-width" appearance="outline">
-                <input matInput formControlName="golesA" >
-              </mat-form-field>
+            <ng-container formGroupName="resultados">
               
-              <input type="text" readonly formControlName="paisB" class="border-0 text-center bg-transparent" >
-              <mat-form-field class="example-full-width" appearance="outline">
-                <input matInput formControlName="golesB">
-              </mat-form-field>
-            </div>
+              <div class="col-6 col-md-5 text-end">
+                <img style="height:50px" [src]="'../../../assets/paises/'+ getIcono(partido.value.resultados.paisA)" alt="">
+                <input type="text" readonly formControlName="paisA" class="border-0 text-center bg-transparent" >
+                <mat-form-field class="example-full-width" appearance="outline">
+                  <input matInput formControlName="golesA" >
+                </mat-form-field>
+                
+              </div>
+              <div class="col-6 col-md-5">
+                <mat-form-field class="example-full-width" appearance="outline">
+                  <input matInput formControlName="golesB">
+                </mat-form-field>
+                <input type="text" readonly formControlName="paisB" class="border-0 text-center bg-transparent" >
+                <img style="height:50px" [src]="'../../../assets/paises/'+ getIcono(partido.value.resultados.paisB)" alt="">
+                
+              </div>
+            </ng-container>
           </div>
       </ng-container>
     </ng-container>

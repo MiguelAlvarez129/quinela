@@ -1,6 +1,4 @@
-html {
-  overflow:hidden;
-}
+
 .example-container {
   width: 100%;
   height: auto;
@@ -25,11 +23,11 @@ mat-toolbar{
 }
 
 mat-sidenav-content{
+  margin-top: 64px;
   background-image:url('../assets/fondo_1.jpg');
-
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .wave{

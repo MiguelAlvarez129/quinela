@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, SimpleChanges, Output, EventEmitter } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
+import { GetPaisIconService } from 'src/app/services/get-pais-icon.service';
 
 @Component({
   selector: 'app-octavos',
@@ -8,7 +9,7 @@ import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
 })
 export class OctavosComponent implements OnInit {
 
-  constructor(private fb : FormBuilder) { }
+  constructor(private fb : FormBuilder, private paises : GetPaisIconService) { }
   @Input() octavos: any;
   @Input() prueba: any = [];
   @Output() resultados = new EventEmitter();
@@ -35,6 +36,10 @@ export class OctavosComponent implements OnInit {
     }
     
     // console.log(this.partidos)
+  }
+
+  getIcono(pais : any){
+    return this.paises.getIcono(pais)
   }
 
   

@@ -5,6 +5,11 @@
       <h1 class="titulo">
         Primera Fase
       </h1>
+      <div class="position-relative" >
+        <button class="right" color="primary" mat-mini-fab matStepperNext>
+          <mat-icon>arrow_right</mat-icon>
+        </button>
+      </div>
       <ng-template matStepperIcon="edit">
         <mat-icon>bubble_chart</mat-icon>
       </ng-template>
@@ -19,52 +24,69 @@
         <mat-tab label="Grupo H"> <app-primera-fase (resultados)="addResultado($event)" [grupo]="'Group H'"></app-primera-fase> </mat-tab>
       </mat-tab-group>
   
-        <div>
-          <button mat-button matStepperNext>Siguiente</button>
-        </div>
+    
     
     </mat-step>
     <mat-step  label="Octavos">
       <h1 class="titulo">
         Octavos
       </h1>
-      <app-octavos (resultados)="addOctavos($event)" [octavos]="primeraFase"  > </app-octavos>
-      <div>
-        <button mat-button matStepperPrevious>Atrás</button>
-        <button mat-button matStepperNext>Siguiente</button>
+      <div class="position-relative" >
+        <button class="left" color="primary" mat-mini-fab matStepperPrevious>
+          <mat-icon>arrow_left</mat-icon>
+        </button>
+        <button class="right" color="primary" mat-mini-fab matStepperNext>
+          <mat-icon>arrow_right</mat-icon>
+        </button>
       </div>
+      <app-octavos (resultados)="addOctavos($event)" [octavos]="primeraFase"  > </app-octavos>
     </mat-step>
     <mat-step  label="Cuartos">
       <h1 class="titulo">
         Cuartos
       </h1>
-      <app-cuartos (resultados)="addCuartos($event)" [cuartos]="octavos" [grupos]="['AB1-CD1','AB2-CD2','EF1-GH1','EF2-GH2']" > </app-cuartos>
-      <div>
-        <button mat-button matStepperPrevious>Atrás</button>
-        <button mat-button matStepperNext>Siguiente</button>
+      <div class="position-relative" >
+        <button class="left" color="primary" mat-mini-fab matStepperPrevious>
+          <mat-icon>arrow_left</mat-icon>
+        </button>
+        <button class="right" color="primary" mat-mini-fab matStepperNext>
+          <mat-icon>arrow_right</mat-icon>
+        </button>
       </div>
+      <app-cuartos (resultados)="addCuartos($event)" [cuartos]="octavos" [grupos]="['AB1-CD1','AB2-CD2','EF1-GH1','EF2-GH2']" > </app-cuartos>
     </mat-step>
     <mat-step label="Semifinales">
       <h1 class="titulo">
         Semifinales
       </h1>
-      <app-cuartos (resultados)="addSemifinales($event)" [cuartos]="cuartos"  [grupos]="['AB1-CD1 EF1-GH1','AB2-CD2 EF2-GH2']"> </app-cuartos>
-      <div>
-        <button mat-button matStepperPrevious>Atrás</button>
-        <button mat-button matStepperNext>Siguiente</button>
+      <div class="position-relative" >
+        <button class="left" color="primary" mat-mini-fab matStepperPrevious>
+          <mat-icon>arrow_left</mat-icon>
+        </button>
+        <button class="right" color="primary" mat-mini-fab matStepperNext>
+          <mat-icon>arrow_right</mat-icon>
+        </button>
       </div>
+      <app-cuartos (resultados)="addSemifinales($event)" [cuartos]="cuartos"  [grupos]="['AB1-CD1 EF1-GH1','AB2-CD2 EF2-GH2']"> </app-cuartos>
     </mat-step>
     <mat-step label="Definición">
+      
       <h1 class="titulo">
         Definición
       </h1>
+      <div class="position-relative" >
+        <button class="left" color="primary" mat-mini-fab matStepperPrevious>
+          <mat-icon>arrow_left</mat-icon>
+        </button>
+      </div>
       <app-cuartos (resultados)="addFinales($event)" [cuartos]="semifinales"   [grupos]="['AB1-CD1 EF1-GH1 AB2-CD2 EF2-GH2']"> </app-cuartos>
       <h1 class="titulo">
         Tercer Lugar
       </h1>
       <app-cuartos (resultados)="addTercerLugar($event)" [cuartos]="semifinalesPerdedores"   [grupos]="['AB1-CD1 EF1-GH1 AB2-CD2 EF2-GH2']"> </app-cuartos>
+      
+ 
       <div>
-        <button mat-button matStepperPrevious>Atrás</button>
         <button mat-button (click)="onSubmit()">Enviar</button>
       </div>
     </mat-step>

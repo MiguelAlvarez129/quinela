@@ -28,17 +28,12 @@ $md-mcgpalette0: (
         A100 : #000000,
         A200 : #000000,
         A400 : #000000,
-        A700 : #ffffff,
+        A700 : #ffffff, 
     )
 );
-html, body { height: 100%; overflow: hidden; }
+body, html {height: 100vh;}
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-body, html {
-  overflow: hidden;
-  background-image: url('./assets/fondo_1.jpg');
-  background-repeat:no-repeat;
-  background-position: center; 
-}
+
 
 @import '~@angular/material/theming';
 @include mat-core();
@@ -68,3 +63,15 @@ body, html {
   src: url('./assets/fonts/Qatar2022Arabic-Bold.ttf');
 }
 
+.titulo{
+  font-family: 'world-cup';
+  text-align: center;
+  color: #7F1431;
+  font-size:xx-large;
+  font-weight: bold;
+}
+
+.toolbar-title{
+  font-family: 'world-cup';
+  color:white;
+}

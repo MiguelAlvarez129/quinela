@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter  } from '@angular/core';
 import { FormBuilder, FormGroup, FormArray } from '@angular/forms';
+import { GetPaisIconService } from 'src/app/services/get-pais-icon.service';
 import equipos from '../../../equipos.json'
 @Component({
   selector: 'app-primera-fase',
@@ -8,7 +9,7 @@ import equipos from '../../../equipos.json'
 })
 export class PrimeraFaseComponent implements OnInit {
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private paises : GetPaisIconService) { }
   grupoForm!: FormGroup;
   partidosJugados: any = [];
   puntaje: any = [];
@@ -33,6 +34,10 @@ export class PrimeraFaseComponent implements OnInit {
 
   get partidos() {
     return this.grupoForm.controls["partidos"] as FormArray;
+  }
+
+  getIcono(pais : any){
+    return this.paises.getIcono(pais)
   }
 
   agregarPartido(partido : any){
