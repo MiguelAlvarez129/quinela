@@ -25,6 +25,7 @@ import { LoginComponent } from './components/login/login.component';
 import {MatCardModule} from '@angular/material/card';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { SemifinalesComponent } from './components/semifinales/semifinales.component';
+import { FinalesComponent } from './components/finales/finales.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { SemifinalesComponent } from './components/semifinales/semifinales.compo
     OctavosComponent,
     CuartosComponent,
     LoginComponent,
-    SemifinalesComponent
+    SemifinalesComponent,
+    FinalesComponent
   ],
   imports: [
     BrowserModule,

@@ -34,7 +34,7 @@
               <div class="pais">
                 {{partido.value['paisB']}}
               </div>
-              <mat-form-field appearance="outline">
+              <mat-form-field appearance="outline" >
                 <input matInput formControlName="golesB" >
               </mat-form-field>
               <mat-form-field appearance="outline" class="scale-in-center" *ngIf="partido.value['golesA'] === partido.value['golesB'] && partido.value['golesB'] && partido.value['golesA']">

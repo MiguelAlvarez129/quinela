@@ -5,7 +5,7 @@
       <h1 class="titulo">
         Primera Fase
       </h1>
-      <div class="position-relative" >
+      <div >
         <button class="right" color="primary" mat-mini-fab matStepperNext>
           <mat-icon>arrow_right</mat-icon>
         </button>
@@ -27,26 +27,29 @@
     
     
     </mat-step>
-    <mat-step  label="Octavos">
-      <h1 class="titulo">
-        Octavos
-      </h1>
-      <div class="position-relative" >
-        <button class="left" color="primary" mat-mini-fab matStepperPrevious>
+    <mat-step  label="Eliminación Directa">
+    
+      <div >
+        <button class="left" color="primary" mat-mini-fab matStepperPrevious style="top:20px">
           <mat-icon>arrow_left</mat-icon>
         </button>
-        <button class="right" color="primary" mat-mini-fab matStepperNext>
-          <mat-icon>arrow_right</mat-icon>
+        <button class="right" color="primary" mat-raised-button style="top:20px" (click)="onSubmit()">
+          Enviar Quiniela
         </button>
       </div>
-      <app-octavos (resultados)="addOctavos($event)" [octavos]="primeraFase"  > 
 
-        <app-cuartos (resultados)="addCuartos($event)" [cuartos]="octavos" [grupos]="['AB1-CD1','AB2-CD2','EF1-GH1','EF2-GH2']" >
-          <app-semifinales (resultados)="addSemifinales($event)" [cuartos]="cuartos"  [grupos]="['AB1-CD1 EF1-GH1','AB2-CD2 EF2-GH2']"> </app-semifinales>
-        </app-cuartos>
-      </app-octavos>
+        <app-octavos (resultados)="addOctavos($event)" [octavos]="primeraFase"  > 
+  
+          <app-cuartos (resultados)="addCuartos($event)" [cuartos]="octavos" [grupos]="['AB1-CD1','AB2-CD2','EF1-GH1','EF2-GH2']" >
+            <app-semifinales (resultados)="addSemifinales($event)" [cuartos]="cuartos"  [grupos]="['AB1-CD1 EF1-GH1','AB2-CD2 EF2-GH2']"> 
+              <app-finales (resultados)="addFinales($event)" [cuartos]="semifinales"   [grupos]="['AB1-CD1 EF1-GH1 AB2-CD2 EF2-GH2']"> </app-finales>
+              <app-finales (resultados)="addTercerLugar($event)" [cuartos]="semifinalesPerdedores"   [grupos]="['AB1-CD1 EF1-GH1 AB2-CD2 EF2-GH2']"> </app-finales>
+            </app-semifinales>
+          </app-cuartos>
+        </app-octavos>
+
     </mat-step>
-    <mat-step  label="Cuartos">
+    <!-- <mat-step  label="Cuartos">
       <h1 class="titulo">
         Cuartos
       </h1>
@@ -94,6 +97,6 @@
       <div>
         <button mat-button (click)="onSubmit()">Enviar</button>
       </div>
-    </mat-step>
+    </mat-step> -->
   </div>
   </mat-stepper>

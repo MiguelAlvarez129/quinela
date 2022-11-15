@@ -24,12 +24,12 @@ export class PrimeraFaseComponent implements OnInit {
     equipos.map((e) => {
       if (e['Group'] === this.grupo) {
         this.agregarPartido(e) 
-        this.partidosJugados.push({[e['HomeTeam']]:0,[e['AwayTeam']]:0})
+        this.partidosJugados.push({[e['HomeTeam']]:0,[e['AwayTeam']]:0,paisB:e['AwayTeam'],paisA:e['HomeTeam'],partidoNum:e['MatchNumber']})
         if (this.puntaje.find(({pais} : any) => pais == e['AwayTeam']) === undefined) this.puntaje.push({pais:e['AwayTeam'],ptos:0,gan:0,emp:0,per:0,gf:0,gc:0,dif:0})
         if (this.puntaje.find(({pais} : any) => pais == e['HomeTeam']) === undefined) this.puntaje.push({pais:e['HomeTeam'],ptos:0,gan:0,emp:0,per:0,gf:0,gc:0,dif:0})
       }
     })
-    this.grupoForm.valueChanges.subscribe(() =>  this.resultados.emit({puntaje:this.puntaje,grupo:this.grupo}))
+    this.grupoForm.valueChanges.subscribe(() =>  this.resultados.emit({puntaje:this.puntaje,grupo:this.grupo,partidoJugados:this.partidosJugados}))
   }
 
   get partidos() {

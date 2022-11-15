@@ -1,0 +1,55 @@
+<div style="position:relative;" class="w-100 d-flex justify-content-center align-items-center h-100">
+
+
+<form [formGroup]="formCuartos">
+  <div>
+
+ 
+  <ng-container formArrayName="cuartos">
+    <ng-container *ngFor="let partido of partidosCuartos.controls;  let i = index">
+      <div class="row" [formGroupName]="i">
+        <!-- <div class="col-1">
+          <div class="medal scale-in-center" *ngIf="partido.value['paisA'] === partido.value['ganador'] && partido.value['paisA'] && partido.value['ganador']">
+          </div>
+        </div> -->
+        <div class="col-2">
+          <div class="d-flex align-items-center">
+            <img style="height:25px" [src]="'../../../assets/paises/'+ getIcono(partido.value['paisA'])" alt="">
+            <div class="pais">
+              {{partido.value['paisA']}}
+            </div>
+            <mat-form-field appearance="outline">
+              <input matInput formControlName="golesA" >
+            </mat-form-field>
+            
+            <mat-form-field appearance="outline" class="scale-in-center" *ngIf="partido.value['golesA'] === partido.value['golesB'] && partido.value['golesB'] && partido.value['golesA']">
+              <input matInput formControlName="penalesA" >
+            </mat-form-field>
+          </div>
+          <div class="d-flex align-items-center">
+            
+            
+            <img style="height:25px" [src]="'../../../assets/paises/'+ getIcono(partido.value['paisB'])" alt="">
+            <div class="pais">
+              {{partido.value['paisB']}}
+            </div>
+            <mat-form-field appearance="outline">
+              <input matInput formControlName="golesB" >
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="scale-in-center" *ngIf="partido.value['golesA'] === partido.value['golesB'] && partido.value['golesB'] && partido.value['golesA']">
+              <input matInput formControlName="penalesB" >
+            </mat-form-field>
+          </div>
+        </div> 
+        <!-- <div class="col-1" >
+            <div class="medal scale-in-center" *ngIf="partido.value['paisB'] === partido.value['ganador'] && partido.value['paisA'] && partido.value['ganador']">
+            </div>
+        </div> -->
+        
+      </div>
+    </ng-container>
+  </ng-container>
+</div>
+</form>
+
+</div>

@@ -31,14 +31,35 @@ mat-stepper {
 .right{
   position: absolute;
   right: 0;
-  top: calc(45% - 40px);
+  top: 20px;
+  z-index: 1000;
 }
 
 
 .left{
   position: absolute;
   left: 0;
-  top: calc(45% - 40px);
+  top: 20px;
+  z-index: 1000;
 }
 
+
+.grid {
+  display: grid; 
+  grid-template-columns: 1fr 1fr; 
+  grid-template-rows: 1fr 1fr; 
+  gap: 0px 0px; 
+  grid-template-areas: 
+    ". ."
+    ". ."; 
+}
+
+::ng-deep .mat-horizontal-stepper-header-container {
+  width: 50% !important;
+  margin: auto !important;
+}
+
+// ::ng-deep .mat-horizontal-content-container{
+//   background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(98,32,64,1) 83%) !important;
+// }
 
