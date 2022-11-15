@@ -1,13 +1,13 @@
-import { Component, OnInit, Input, Output, EventEmitter , SimpleChange} from '@angular/core';
-import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { FormArray, FormBuilder } from '@angular/forms';
 import { GetPaisIconService } from 'src/app/services/get-pais-icon.service';
 
 @Component({
-  selector: 'app-cuartos',
-  templateUrl: './cuartos.component.html',
-  styleUrls: ['./cuartos.component.scss']
+  selector: 'app-semifinales',
+  templateUrl: './semifinales.component.html',
+  styleUrls: ['./semifinales.component.scss']
 })
-export class CuartosComponent implements OnInit {
+export class SemifinalesComponent implements OnInit {
   
   constructor(private fb: FormBuilder, private paises : GetPaisIconService) { }
   @Input() cuartos: any;

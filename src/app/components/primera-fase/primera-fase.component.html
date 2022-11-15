@@ -7,7 +7,7 @@
             <ng-container formGroupName="resultados">
               
               <div class="col-6 col-md-5 text-end">
-                <img style="height:50px" [src]="'../../../assets/paises/'+ getIcono(partido.value.resultados.paisA)" alt="">
+                <img style="height:25px" [src]="'../../../assets/paises/'+ getIcono(partido.value.resultados.paisA)" alt="">
                 <input type="text" readonly formControlName="paisA" class="border-0 text-center bg-transparent" >
                 <mat-form-field class="example-full-width" appearance="outline">
                   <input matInput formControlName="golesA" >
@@ -19,7 +19,7 @@
                   <input matInput formControlName="golesB">
                 </mat-form-field>
                 <input type="text" readonly formControlName="paisB" class="border-0 text-center bg-transparent" >
-                <img style="height:50px" [src]="'../../../assets/paises/'+ getIcono(partido.value.resultados.paisB)" alt="">
+                <img style="height:25px" [src]="'../../../assets/paises/'+ getIcono(partido.value.resultados.paisB)" alt="">
                 
               </div>
             </ng-container>

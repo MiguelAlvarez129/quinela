@@ -3,10 +3,34 @@
   justify-content: center;
 }
 
-.col-8{
+.col-2{
+  flex-direction: column;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+}
+
+.grid {
+  display: grid; 
+  grid-template-columns: 1fr 1fr; 
+  grid-template-rows: 1fr 1fr; 
+  gap: 0px 0px; 
+  grid-template-areas: 
+    ". ."
+    ". ."; 
+}
+
+
+div.row:nth-child(odd) {
+ margin-right:auto;
+}
+
+div.row:nth-child(even) {
+  margin-left:auto;
+ }
+ 
+ div.row:nth-child(even) > div > div{
+  flex-direction: row-reverse;
 }
 
 .pais{

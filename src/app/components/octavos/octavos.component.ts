@@ -29,7 +29,7 @@ export class OctavosComponent implements OnInit {
       this.octavos = this.prueba
       this.obtenerOctavos()
       
-      this.partidos.flat().map((partido) => {
+      this.partidos.flat().reverse().map((partido) => {
     
         this.agregarPartido(partido)
       })
@@ -46,7 +46,7 @@ export class OctavosComponent implements OnInit {
   ngOnChanges(changes: SimpleChanges) { 
   if(this.prueba){
     this.obtenerOctavos()
-    this.partidos.flat().map((partido) => {
+    this.partidos.flat().reverse().map((partido) => {
         this.agregarPartido(partido)
     })
   }
